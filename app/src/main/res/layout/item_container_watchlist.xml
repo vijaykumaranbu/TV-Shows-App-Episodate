@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+        <variable name="tvShow"
+            type="com.example.episodate.models.TVShow"/>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_4sdp">
+
+        <View
+            android:id="@+id/view_supporter"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@+id/imageThumbnail"/>
+
+        <View
+            android:id="@+id/backgroundView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/item_background"
+            app:layout_constraintTop_toTopOf="@+id/imageThumbnail"
+            app:layout_constraintBottom_toBottomOf="@+id/view_supporter"/>
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/imageThumbnail"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:imageURL='@{tvShow.thumbnail}'
+            app:riv_corner_radius="@dimen/_4sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/textName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:fontFamily="@font/ubuntu_medium"
+            android:paddingTop="@dimen/_8sdp"
+            android:includeFontPadding="false"
+            android:text='@{tvShow.name}'
+            android:textColor="@color/colorTextIcons"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintTop_toTopOf="@id/backgroundView"
+            app:layout_constraintStart_toEndOf="@+id/imageThumbnail"
+            app:layout_constraintEnd_toEndOf="@id/backgroundView" />
+
+        <TextView
+            android:id="@+id/textNetwork"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:fontFamily="@font/ubuntu_regular"
+            android:includeFontPadding="false"
+            android:text='@{tvShow.network + " (" + tvShow.country +")"}'
+            android:textColor="@color/colorTextOthers"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintTop_toBottomOf="@+id/textName"
+            app:layout_constraintStart_toStartOf="@+id/textName"
+            app:layout_constraintEnd_toEndOf="@+id/textName"/>
+
+        <TextView
+            android:id="@+id/textStarted"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:fontFamily="@font/ubuntu_regular"
+            android:includeFontPadding="false"
+            android:text='@{tvShow.startDate}'
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintTop_toBottomOf="@+id/textNetwork"
+            app:layout_constraintStart_toStartOf="@+id/textName"
+            app:layout_constraintEnd_toEndOf="@+id/textName"/>
+
+        <TextView
+            android:id="@+id/textStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:fontFamily="@font/ubuntu_regular"
+            android:includeFontPadding="false"
+            android:text='@{tvShow.status}'
+            android:textColor="@android:color/holo_green_light"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintTop_toBottomOf="@+id/textStarted"
+            app:layout_constraintStart_toStartOf="@+id/textName"
+            app:layout_constraintEnd_toEndOf="@+id/textName"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
